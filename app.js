@@ -25,7 +25,7 @@ const commentRoutes = require("./routes/comments");
 
 // mongoose
 const MongoStore = require("connect-mongo");
-const dbUrl = process.env.DB_URL || "mongodb://localhost:27017/i-blog";
+const dbUrl = process.env.DB_URL;
 mongoose.connect(dbUrl);
 
 const db = mongoose.connection;
@@ -55,7 +55,7 @@ const store = MongoStore.create({
   mongoUrl: dbUrl,
   touchAfter: 24 * 60 * 60,
   crypto: {
-    secret: "thisshouldbeabettersecret!",
+    secret: secret,
   },
 });
 
